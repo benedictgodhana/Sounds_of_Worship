@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Maritime Theme Variables */
+:root {
+    --ocean-deep: #003366;
+    --ocean-medium: #005999;
+    --ocean-light: #0099cc;
+    --seafoam: #e6f3ff;
+    --coral: #ff6b6b;
+    --sand: #f5e6d3;
+    --wave-size: 20px;
+}
+
+/* Background Animation */
+@keyframes wave {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
+}
+
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--ocean-deep), var(--ocean-medium));
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0);
+    background-size: 50px 50px;
+    animation: wave 15s linear infinite;
+    pointer-events: none;
+}
+
+/* Login Container */
+.guest-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Login Card */
+form {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--ocean-light), var(--coral));
+}
+
+/* Input Fields */
+.text-input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 2px solid rgba(0, 51, 102, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background-color: var(--seafoam);
+}
+
+.text-input:focus {
+    border-color: var(--ocean-medium);
+    box-shadow: 0 0 0 3px rgba(0, 153, 204, 0.2);
+    outline: none;
+}
+
+/* Labels */
+.input-label {
+    font-weight: 500;
+    color: var(--ocean-deep);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* Button */
+.primary-button {
+    background: linear-gradient(135deg, var(--ocean-medium), var(--ocean-deep));
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 51, 102, 0.2);
+}
+
+.primary-button:active {
+    transform: translateY(0);
+}
+
+/* Remember Me Checkbox */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--ocean-medium);
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+/* Links */
+a {
+    color: var(--ocean-medium);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--ocean-deep);
+    text-decoration: underline;
+}
+
+/* Error Messages */
+.error-message {
+    color: var(--coral);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+/* Toast Notifications Custom Styling */
+.toast {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    border-left: 4px solid var(--ocean-medium);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.toast-success {
+    border-left-color: #28a745;
+}
+
+.toast-error {
+    border-left-color: var(--coral);
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    form {
+        padding: 1.5rem;
+    }
+
+    .primary-button {
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .flex {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* Loading Animation */
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+.loading {
+    background: linear-gradient(90deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.2) 50%,
+        rgba(255,255,255,0) 100%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite linear;
+}
